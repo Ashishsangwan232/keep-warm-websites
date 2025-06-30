@@ -1,0 +1,16 @@
+name: Keep Render Alive
+
+on:
+  schedule:
+    - cron: "*/2 * * * *"  # Every 2 minutes
+  workflow_dispatch:       # Allow manual run
+
+jobs:
+  keep-awake:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Curl Ping to SoulReads backend
+        run: |
+          curl -X GET "https://soulreadsbackend.onrender.com/api/soulReadsBete" \
+          -H "x-cron-key: Website-ko-utha-ke-rkhnaa"
